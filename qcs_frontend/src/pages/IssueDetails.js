@@ -47,10 +47,9 @@ const IssueDetails = () => {
     return () => window.removeEventListener('keydown', onKeyDown)
   }, [])
   const resolveImageSrc = (filePath) => {
-    // Always use /uploads/... so Nginx forwards to backend
     if (!filePath) return ''
     if (filePath.startsWith('http')) return filePath
-    return `/uploads/${filePath.replace(/^\/+/, '')}`
+    return `${API_URL}/uploads/${filePath.replace(/^\/+/, '')}`
   }
 
   useEffect(() => {
